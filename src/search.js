@@ -5,8 +5,8 @@ const consts_search = require('./constants/consts_search');
 const consts_search_gifs = require('./constants/consts_search_gifs');
 const consts_search_pornstars = require('./constants/consts_search_pornstars');
 const consts_search_videos = require('./constants/consts_search_videos');
-const jsdom = require('jsdom');
-const {JSDOM} = jsdom;
+// const jsdom = require('jsdom');
+// const {JSDOM} = jsdom;
 
 module.exports = {
 	scraping_search: (source, keys, options) => {

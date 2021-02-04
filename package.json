@@ -1,7 +1,7 @@
 {
 	"name": "@justalk/pornhub-api",
 	"version": "3.4.0",
-	"description": "Very complete scrapper for the famous porn website pornhub",
+	"description": "Very complete scraper for the famous porn website pornhub",
 	"license": "MIT",
 	"repository": {
 		"type": "git",

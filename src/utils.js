@@ -4,10 +4,11 @@ const consts_queries = require('./constants/consts_queries');
 const utils_sanitizer = require('./helpers/utils_sanitizer');
 const Entities = require('html-entities').AllHtmlEntities;
 const entities = new Entities();
-const jsdom = require('jsdom');
-const { JSDOM } = jsdom;
+// const jsdom = require('jsdom');
+// const { JSDOM } = jsdom;
 // const got = require('got');
-import ky from 'ky-universal';
+// import ky from 'ky-universal';
+const ky = require('ky-universal')
 const got = ky
 const promise = require('promise');
 
@@ -145,10 +146,10 @@ module.exports = {
 		return consts_global.links.BASE_URL + '/' + consts_global.links.MODEL + slug;
 	},
 	source_to_dom: source => {
-		if (typeof window === 'undefined') {
-			const dom = new JSDOM(source);
-			return dom.window.document;
-		}
+		// if (typeof window === 'undefined') {
+		// 	const dom = new JSDOM(source);
+		// 	return dom.window.document;
+		// }
 		return window.document;
 	},
 	convert_to_second: time => {
