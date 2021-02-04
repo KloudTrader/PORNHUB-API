@@ -5,8 +5,10 @@ const utils_sanitizer = require('./helpers/utils_sanitizer');
 const Entities = require('html-entities').AllHtmlEntities;
 const entities = new Entities();
 const jsdom = require('jsdom');
-const {JSDOM} = jsdom;
-const got = require('got');
+const { JSDOM } = jsdom;
+// const got = require('got');
+import ky from 'ky-universal';
+const got = ky
 const promise = require('promise');
 
 module.exports = {
@@ -143,8 +145,11 @@ module.exports = {
 		return consts_global.links.BASE_URL + '/' + consts_global.links.MODEL + slug;
 	},
 	source_to_dom: source => {
-		const dom = new JSDOM(source);
-		return dom.window.document;
+		if (typeof window === 'undefined') {
+			const dom = new JSDOM(source);
+			return dom.window.document;
+		}
+		return window.document;
 	},
 	convert_to_second: time => {
 		if (module.exports.is_parameter_missing(time)) {
@@ -181,7 +186,7 @@ module.exports = {
 			request_diff_heap_total: request_heap_total,
 			request_diff_heap_used: request_heap_used
 		};
-		return {performance};
+		return { performance };
 	},
 	/**
 	* Handle the error message of the api
@@ -190,6 +195,6 @@ module.exports = {
 	* @return {Object} The object that notice there is an error
 	**/
 	error_message: error => {
-		return {error: consts_global.errors.DEFAULT};
+		return { error: consts_global.errors.DEFAULT };
 	}
 };
